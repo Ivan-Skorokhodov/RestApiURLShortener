@@ -33,13 +33,13 @@ func MustLoad() *Config {
 	}
 
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		log.Fatal("config file %s does not exist", configPath)
+		log.Fatalf("config file %s does not exist", configPath)
 	}
 	
 	var cfg Config
 
 	if err := cleanenv.ReadConfig(configPath, &cfg); err != nil {
-		log.Fatal("cannot read %s config", err)
+		log.Fatalf("cannot read %s config", err)
 	}
 
 	return &cfg
